@@ -5,19 +5,21 @@ fib 0 = 0
 fib 1 = 1
 fib n = fib (n - 1) + fib (n - 2)
 
-getEven l = map (even) l
-getSum l = sum (e)
+buildSeq num list = do 
+    let f = fib num
+    let next = num + 1
 
-getEvenSum l = do
-    let e = map (even) l
-    let s = map (sum) e
-    s
+    f:list
+
+    if f <= 400
+        then buildSeq next list
+        else list
 
 main = do
-    let f = []
-    let n = fib 1
+    let seq = buildSeq 1 []
 
-    if n > 4000000 
-        then print getEvenSum f
-        else let n = n + 1 fib n 
+    -- let e = map even seq
+    -- let s = sum e
+
+    print seq
 
