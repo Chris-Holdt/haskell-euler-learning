@@ -9,17 +9,18 @@ buildSeq num list = do
     let f = fib num
     let next = num + 1
 
-    f:list
+    let newlist = f:list
+    let list = newlist
 
-    if f <= 400
+    if f <= 4000000
         then buildSeq next list
-        else list
+        else drop 1 list
 
 main = do
-    let seq = buildSeq 1 []
+    let seq = buildSeq 2 []
 
-    -- let e = map even seq
-    -- let s = sum e
+    let e = filter (even) seq
+    let s = sum e
 
-    print seq
+    print s
 
